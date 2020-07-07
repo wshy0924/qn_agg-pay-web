@@ -3,17 +3,13 @@ package com.ggeit.pay.impl;
 import com.ggeit.pay.communication.HisRequest;
 import com.ggeit.pay.config.qn_SysContants;
 import com.ggeit.pay.inf.qn_zfHisServiceInf;
-import com.ggeit.pay.utils.GGitUtil;
-import com.ggeit.pay.utils.JsonUtils;
-import com.ggeit.pay.utils.HisMD5Utils;
-import com.ggeit.pay.utils.WXPayUtil;
+import com.ggeit.pay.utils.ToolsUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -37,9 +33,9 @@ public class Qn_zfHisServiceImpl implements qn_zfHisServiceInf {
 
 		reqmap.put ("tradeParam",tradeParamMap);
 
-		reqmap.put("sign", HisMD5Utils.builderSignStr2(tradeParamMap, qn_SysContants.yhConstantsmap.get("HISMD5KEY").toString()));//算签名sign
+		reqmap.put("sign", ToolsUtil.builderPostStrSign (tradeParamMap, qn_SysContants.yhConstantsmap.get("HISMD5KEY").toString()));//算签名sign
 		logger.info("查询代缴费信息reqmap = " + reqmap);
-		Map<String,Object> respmap = hisrequest.dopost(qn_SysContants.yhConstantsmap.get("HISUrl").toString(), JsonUtils.MapToJson(reqmap));
+		Map<String,Object> respmap = hisrequest.dopost(qn_SysContants.yhConstantsmap.get("HISUrl").toString(), ToolsUtil.MapToJson(reqmap));
 		logger.info("his返回代缴费信息：" + respmap);
 		
 		return respmap;
@@ -75,7 +71,7 @@ public class Qn_zfHisServiceImpl implements qn_zfHisServiceInf {
 		tradeparamMap.put ("displaywincode","");
 		tradeparamMap.put ("wincount","");
 		tradeparamMap.put ("errormsg","");	//异常错误信息
-		tradeparamMap.put ("clearDate_app",GGitUtil.getNowTime ());	//银行清算时间，当前时间
+		tradeparamMap.put ("clearDate_app",ToolsUtil.getNowTime ());	//银行清算时间，当前时间
 		tradeparamMap.put ("OpenID_app",map.get ("Openid"));
 		tradeparamMap.put ("HisCardNo_app",map.get ("PatientId"));
 		tradeparamMap.put ("PatientName_app",map.get ("PatientName"));	//患者姓名
@@ -85,14 +81,14 @@ public class Qn_zfHisServiceImpl implements qn_zfHisServiceInf {
 		tradeparamMap.put ("YBAmt_app",0);
 		tradeparamMap.put ("PatientId_app",map.get ("PatientId"));
 		tradeparamMap.put ("BillNo_app",map.get ("BillNo"));
-		tradeparamMap.put ("AppPayType","wechatpayWeb");
+		tradeparamMap.put ("AppPayType","wechatpayWeb");	//传固定值
 		tradeparamMap.put ("Area_app","");	//院区地址
 
 		reqmap.put ("tradeparam",tradeparamMap);
 
-		reqmap.put("sign", HisMD5Utils.builderSignStr2(tradeparamMap, qn_SysContants.yhConstantsmap.get("HISMD5KEY").toString()));//算签名sign
+		reqmap.put("sign", ToolsUtil.builderPostStrSign (tradeparamMap, qn_SysContants.yhConstantsmap.get("HISMD5KEY").toString()));//算签名sign
 		
-		Map<String,Object> respmap = hisrequest.dopost(qn_SysContants.yhConstantsmap.get("HISUrl").toString(), JsonUtils.MapToJson(reqmap));
+		Map<String,Object> respmap = hisrequest.dopost(qn_SysContants.yhConstantsmap.get("HISUrl").toString(), ToolsUtil.MapToJson(reqmap));
 		logger.info("YH_his返回结算信息：" + respmap);
 		
 		return respmap;

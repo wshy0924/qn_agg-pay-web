@@ -1,0 +1,63 @@
+server:
+  port: 80
+  
+para: 
+  serverip: 127.0.0.1
+  serverport: 8888
+  wxappid: wx6a58006d3f0ab6ac
+  wxsecret: 65ccc078f8893ffef4e5b84914e48160
+  aliappid: 2018081161083118
+  hisappid: 5AiaQDUQEW9UvBG3+TTjYA==
+  
+  # MyBatis配置  
+mybatis:
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapper-locations: classpath:mapper/*Mapper.xml
+  # 加载全局的配置文件
+  configLocation: classpath:/mybatis-config.xml
+  #type-aliases-package: com.ggeit.pay.entity
+
+spring:
+  jmx: 
+    default-domain: project1 
+  thymeleaf:
+    prefix: classpath:/templates/
+    mode: LEGACYHTML5
+  profiles: 
+    active: dev2
+---
+#开发测试环境
+spring:
+  profiles: test
+  datasource: 
+    username: root
+    password: wshy0924
+    url: jdbc:mysql://localhost:3306/bz_agg_pay?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=UTC&oldsyntax=true 
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    
+---
+#正式环境
+spring:
+  profiles: dev
+  datasource:
+    username: root
+    password: 'Geit@86#97$0000'
+    url: jdbc:mysql://www.ggzzrj.xyz:6609/agg_pay?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=UTC&oldsyntax=true 
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    
+---
+spring:
+  profiles: dev2
+  datasource:
+    username: root
+    password: 'Admin@86970000'
+    url: jdbc:mysql://106.12.24.238:6609/agg_pay?useUnicode=true&useSSL=false&characterEncoding=utf-8&serverTimezone=UTC&oldsyntax=true 
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+  
+
+
+
+

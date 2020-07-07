@@ -15,6 +15,7 @@
         <result column="PayMethod" jdbcType="VARCHAR" property="PayMethod" />
         <result column="PatientName" jdbcType="VARCHAR" property="PatientName" />
         <result column="Openid" jdbcType="VARCHAR" property="Openid" />
+        <result column="BillType" jdbcType="VARCHAR" property="BillType" />
 	</resultMap>
 	
     <!-- 根据BillNo查询所有数据 -->
@@ -29,7 +30,8 @@
     <insert id="insertall" parameterType="map">
         insert into billinfo
 
-           (BillNo, PatientId, BillName, BillMoney, BillTime,SetDepartName, PayOrderid, ReturnOrderid, PayStatus,PayMethod,PatientName)
+           (BillNo, PatientId, BillName, BillMoney, BillTime,SetDepartName, PayOrderid,
+           ReturnOrderid, PayStatus,PayMethod,BillType,PatientName)
           	values
             (#{BillNo,jdbcType=VARCHAR},
             #{PatientId,jdbcType=VARCHAR},
@@ -42,6 +44,7 @@
             #{PayStatus,jdbcType=VARCHAR},
             #{PayMethod,jdbcType=VARCHAR},
             #{PatientName,jdbcType=VARCHAR},
+            #{BillType,jdbcType=VARCHAR},
             #{Openid,jdbcType=VARCHAR},)
 
         ON DUPLICATE KEY UPDATE
@@ -56,6 +59,7 @@
         PayStatus =  #{PayStatus,jdbcType=VARCHAR},
         PayMethod = #{PayMethod,jdbcType=VARCHAR},
         PatientName = #{PatientName,jdbcType=VARCHAR},
+        BillType = #{BillType,jdbcType=VARCHAR},
         Openid = #{Openid,jdbcType=VARCHAR},}
 
     </insert>

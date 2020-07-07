@@ -1,12 +1,8 @@
 package com.ggeit.pay.controller;
 
 
-import com.alibaba.fastjson.JSON;
-import com.alipay.api.AlipayApiException;
-import com.alipay.api.internal.util.AlipaySignature;
-import com.ggeit.pay.config.ALIPayConstants;
 import com.ggeit.pay.impl.*;
-import com.ggeit.pay.utils.GGitUtil;
+import com.ggeit.pay.utils.ToolsUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.ResultSet;
 import java.util.*;
-import java.util.Map.Entry;
 
 
 @Controller
@@ -77,7 +69,7 @@ public class ZF_LayerController {
 //
 //			return "redirect:" + url;
 			map.put("tips", "当前处方不支持支付宝支付！");
-			return "wc_failure";// 用了html不能使用反斜杠如"/tips"
+			return "wc_failure";
 		} else {
 			map.put("tips", "未匹配到APP类型");
 			return "wc_failure";// 用了html不能使用反斜杠如"/tips"
@@ -121,6 +113,7 @@ public class ZF_LayerController {
 				String BillMoney = "";
 				String BillTime = "";
 				String SetDepartName = "";
+				String BillType = "";
 
 				if (!ResultSet.isEmpty ()){
 
@@ -130,10 +123,11 @@ public class ZF_LayerController {
 						logger.info("代缴费处方号 = " + FlowNo);
 
 						if(BillNo.equals(FlowNo)) {
-							BillName = GGitUtil.str2HexStr2(temp.get("BILLNAME").toString(), "UTF-8");		//处方描述
+							BillName = ToolsUtil.str2HexStr2(temp.get("BILLNAME").toString(), "UTF-8");		//处方描述
 							BillMoney = temp.get("BILLMONEY").toString();	//处方金额
 							BillTime = temp.get("BILLTIME").toString();
 							SetDepartName = temp.get("SETDEPARTNAME").toString();
+							BillType = temp.get ("BILLTYPE").toString ();
 
 						}
 					}
@@ -157,6 +151,7 @@ public class ZF_LayerController {
 				insertMap.put("BillName", BillName);
 				insertMap.put("PayMethod", "微信支付");
 				insertMap.put("PatientName", PatientName);
+				insertMap.put("BillType", BillType);	//处方类型
 
 
 				Boolean flag = orderservice.insert("billinfo.insertall", insertMap);

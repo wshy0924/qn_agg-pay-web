@@ -1,7 +1,5 @@
 package com.ggeit.pay.impl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,8 +16,6 @@ import com.alipay.api.response.AlipayTradeRefundResponse;
 import com.ggeit.pay.communication.ALIPayRequest;
 import com.ggeit.pay.inf.AliPayServiceInf;
 import com.ggeit.pay.utils.AliPayUtil;
-import com.ggeit.pay.utils.GGitUtil;
-import com.ggeit.pay.utils.WXPayUtil;
 
 @Service
 public class AliPayServiceImpl implements AliPayServiceInf {

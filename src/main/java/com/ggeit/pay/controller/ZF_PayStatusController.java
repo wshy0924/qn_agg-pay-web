@@ -7,8 +7,7 @@ import com.ggeit.pay.impl.AliPayServiceImpl;
 import com.ggeit.pay.impl.OrderService;
 import com.ggeit.pay.impl.Qn_zfHisServiceImpl;
 import com.ggeit.pay.impl.WxPayServiceImpl;
-import com.ggeit.pay.utils.GGitUtil;
-import com.ggeit.pay.utils.JsonUtils;
+import com.ggeit.pay.utils.ToolsUtil;
 import com.ggeit.pay.utils.WXPayUtil;
 import com.google.gson.JsonObject;
 import org.slf4j.Logger;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -68,7 +66,7 @@ public class ZF_PayStatusController {
         Map<String,Object> querymap = wxpayimpl.Wx_CycleOrderQuery(PayOrderid);
 
         String conresultstr = querymap.get("conResult").toString ();
-        Map<String,Object> conresultmap = JsonUtils.JsonToMapObj (conresultstr);
+        Map<String,Object> conresultmap = ToolsUtil.JsonToMapObj (conresultstr);
         Map<String,Object> conResultdatamap = (Map<String, Object>) conresultmap.get("data");
         logger.info ("conResultmap = " + conResultdatamap);
         String trade_state =  conResultdatamap.get("trade_state").toString ();
@@ -111,7 +109,7 @@ public class ZF_PayStatusController {
                     map.put ("PatientId", PatientId);
                     map.put ("payType", "微信支付");
                     map.put ("BillCost", BillMoney);
-                    String nowtime = GGitUtil.getnowTime ();
+                    String nowtime = ToolsUtil.getNowTime ();
                     map.put ("NowTime", nowtime);
 
                     return "wc_success";
@@ -204,7 +202,7 @@ public class ZF_PayStatusController {
                 map.put("transType", qn_SysContants.transtypemap.get(resultmap.get("transType")));	//业务类型
                 map.put("payType", qn_SysContants.transtypemap.get(resultmap.get("BillMethod")));	//支付方式
                 map.put("BillCost",(String) resultmap.get("TotalAmount"));	//单据费用
-                String nowtime = GGitUtil.getnowTime();
+                String nowtime = ToolsUtil.getNowTime();
                 map.put("NowTime", nowtime);	//订单支付时间
                 map.put("trade_no", unifiedorderresp.getTradeNo());
 
@@ -245,7 +243,7 @@ public class ZF_PayStatusController {
     public String ZFalipaystatus(HttpServletRequest request,HttpServletResponse response, @RequestBody JsonObject paramStr,Map<String,Object> map) throws Exception{
         logger.info("接收支付详情页数据：" + paramStr);
 
-        Map<String,Object> paramMap = JsonUtils.JsonToMapObj(paramStr.toString());
+        Map<String,Object> paramMap = ToolsUtil.JsonToMapObj(paramStr.toString());
         String BillNo = (String) paramMap.get("BillNo");
         String trade_no = (String) paramMap.get("trade_no");
         //根据BillNo查yh_billno数据库

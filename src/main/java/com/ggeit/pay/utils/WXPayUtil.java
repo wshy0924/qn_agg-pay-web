@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -114,6 +115,44 @@ public class WXPayUtil {
 	public static String wxgetTime() {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 		return df.format(System.currentTimeMillis());
+	}
+
+	/**
+	 * 格式化时间
+	 * @param format
+	 * @return
+	 */
+	public static String getDateTime(String format) {
+		Date now = new Date();
+		SimpleDateFormat sd = new SimpleDateFormat(format);
+		return sd.format(now);
+	}
+	/**
+	 * 格式化前一天
+	 * @param format
+	 * @return
+	 */
+	public static String getBeforeDateTime(String format) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DATE, -1); // 得到前一天
+		Date date = calendar.getTime();
+		SimpleDateFormat sd = new SimpleDateFormat(format);
+		return sd.format(date);
+	}
+	/**
+	 * 改变时间字符串的格式
+	 * @param strTime
+	 * @param srcformat
+	 * @param desformat
+	 * @return
+	 */
+	public static String formatStringTime(String strTime,String srcformat,String desformat) throws ParseException {
+		String now = "";
+
+		Date date = new SimpleDateFormat(srcformat).parse(strTime);
+		now = new SimpleDateFormat(desformat).format(date);
+
+		return now;
 	}
 
 	/**

@@ -3,6 +3,7 @@ package com.ggeit.pay.communication;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ggeit.pay.utils.ToolsUtil;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.SimpleHttpConnectionManager;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -12,8 +13,6 @@ import org.apache.commons.httpclient.params.HttpConnectionManagerParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import com.ggeit.pay.utils.JsonUtils;
 
 @Service
 public class HisRequest {
@@ -60,7 +59,7 @@ public class HisRequest {
 				//string转json,json转map
 			    //JSONObject jsonObject = JSONObject.parseObject(hisResult);
 				
-			    strResult = JsonUtils.JsonToMapObj(hisResult);
+			    strResult = ToolsUtil.JsonToMapObj(hisResult);
 			    strResult.put("statuscode",post.getStatusCode() + "");
 			    
 			} else {
