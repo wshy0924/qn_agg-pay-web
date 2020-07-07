@@ -1,0 +1,8 @@
+12:25:56.321 [main] INFO  com.ggeit.pay.AggPayWebApplication - Starting AggPayWebApplication on LAPTOP-DHQVS64H with PID 612 (F:\BZ_agg-pay-web\BZ_agg-pay-web\target\classes started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+12:25:56.323 [main] INFO  com.ggeit.pay.AggPayWebApplication - The following profiles are active: dev2
+12:26:16.295 [main] INFO  com.ggeit.pay.AggPayWebApplication - Starting AggPayWebApplication on LAPTOP-DHQVS64H with PID 22344 (F:\BZ_agg-pay-web\BZ_agg-pay-web\target\classes started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+12:26:16.297 [main] INFO  com.ggeit.pay.AggPayWebApplication - The following profiles are active: dev2
+12:26:18.791 [main] INFO  com.ggeit.pay.AggPayWebApplication - Started AggPayWebApplication in 2.812 seconds (JVM running for 3.823)
+13:03:42.676 [main] INFO  com.ggeit.pay.AggPayWebApplication - Starting AggPayWebApplication on LAPTOP-DHQVS64H with PID 23564 (F:\BZ_agg-pay-web\BZ_agg-pay-web\target\classes started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+13:03:42.679 [main] INFO  com.ggeit.pay.AggPayWebApplication - The following profiles are active: dev2
+13:03:45.193 [main] INFO  com.ggeit.pay.AggPayWebApplication - Started AggPayWebApplication in 2.839 seconds (JVM running for 3.886)

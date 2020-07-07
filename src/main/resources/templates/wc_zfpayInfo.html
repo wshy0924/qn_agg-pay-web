@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>付款-支付详情页</title>
+		<link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+		<script src="../lib/js/jquery-1.12.4.min.js"></script>
+		<script src="../lib/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			#span1{
+				display:inline-block;
+				width:11rem;
+				text-align:left;
+				margin-left:1rem;
+			}
+			.radio-wx {
+			    position: relative;
+			    display: inline-block;
+			    margin-right: 12px;
+				float: right;
+				margin-right: 20px;
+			}
+			
+			.radio-wx input {
+			    vertical-align: middle;
+			    margin-top: -2px;
+			    margin-bottom: 1px;
+			    /* 前面三行代码是为了让radio单选按钮与文字对齐 */
+			    width: 20px;
+			    height: 20px;
+			    appearance: none;/*清楚默认样式*/
+			    -webkit-appearance: none;
+			    opacity: 0;
+			    outline: none;
+			    /* 注意不能设置为display:none*/
+				
+			}
+			
+			.radio-wx label {
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    z-index: -1;
+			    /*注意层级关系，如果不把label层级设为最低，会遮挡住input而不能单选*/
+			    width: 20px;
+			    height: 20px;
+			    border: 1px solid lightblue;
+			    border-radius: 100%;
+			}
+			.radio-wx input:checked+label {
+			    background: #D9534F;
+			}
+			.radio-wx input:checked+label::after {
+			    content: "";
+			    position: absolute;
+			    left: 7px;
+			    top: 2px;
+			    width: 5px;
+			    height: 12px;
+			    border-right: 2px solid #fff;
+			    border-bottom: 2px solid #fff;
+			    transform: rotate(45deg);
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="container" style="background-color: #F7F7F7;">
+			<center style="margin-top:20px; margin-bottom: 10px;">
+				<img src="../lib/img/shanghu24.png" style="margin-bottom: 5px;">
+				<span style="font-size: 17px; margin-left: 2px;">务川人民医院</span>
+			</center>
+<!-- 			<center style="margin-top:20px; margin-bottom: 10px;"><img src="../lib/img/yiyuan.png" ></center> -->
+		</div>
+			<!-- <div>
+		        <h3><p class="text-center">XX市XX人民医院</p></h3>
+		        <br>r
+		    </div> -->	
+		<div style="margin-top: 30px;">
+			<h3><p class="text-center text-info">系统正在确认缴费信息,请稍后</p></h3>
+			<p class="help-block" align="center">(您可通过点击"查看缴费结果"按钮查询支付结果)</p>
+		</div>
+		
+		<div style="margin-top: 80px;">
+			<div><h4><p class="text-center text-info">处方单据详细信息</p></h4></div>
+			<hr style="margin-top: 1px;">
+			<div style="margin-left: 15px;" >
+				<span style="color: #ADADAD;" id="span1">就诊人</span>
+				<input text="text" readonly id="PatientName" value="许超一" th:value="${PatientName}" th:placeholder="${PatientName}"  style="outline:0;border: 0;  width: 50%; height: 20px; font-size: 15px;" class=" text-right">
+			</div>
+			<div style="margin-left: 15px;margin-top: 8px;">
+				<span style="color: #ADADAD;" id="span1">单据号</span>
+				<input text="text" readonly id="BillNo" value="U0218912" th:value="${BillNo}" th:placeholder="${BillNo}"  style="outline:0;border: 0;  width:  50%; height: 20px; font-size: 15px;" class=" text-right">
+			</div>
+			<div style="margin-left: 15px; margin-top: 8px;">
+				<span style="color: #ADADAD;" id="span1">业务类型</span>
+				<input text="text" readonly id="transType" value="门诊挂号" th:value="${transType}" th:placeholder="${transType}"  style="outline:0;border: 0;  width: 50%; height: 20px; font-size: 15px;" class=" text-right">
+			</div>
+			<div style="margin-left: 15px; margin-top: 8px;">
+				<span style="color: #ADADAD;" id="span1">支付方式</span>
+				<input text="text" readonly id="payType" value="微信支付" th:value="${payType}" th:placeholder="${payType}"  style="outline:0;border: 0;  width:50%; height: 20px; font-size: 15px;" class=" text-right">
+			</div>
+			<div style="margin-left: 15px; margin-top: 8px;">
+				<span style="color: #ADADAD;" id="span1">单据费用(单位:元)</span>
+				<input text="text" readonly id="BillCost" value="12.25" th:value="${BillCost}" th:placeholder="${BillCost}"  style="outline:0;border: 0;  width: 50%; height: 20px; font-size: 15px;" class=" text-right">
+			</div>
+			<div style="margin-left: 15px;margin-top: 8px;">
+				<span style="color: #ADADAD;" id="span1">支付时间</span>
+				<input text="text" readonly id="NowTime" value="2020-01-02 08:12:11" th:value="${NowTime}" th:placeholder="${NowTime}"  style="outline:0;border: 0;  width: 50%; height: 20px; font-size: 15px;" class=" text-right">
+			</div>
+			 
+		</div>
+		<div >
+			<!-- <h5 class="text-info" style="margin-left: 10px;">备注信息:</h5><h4><p th:text="${remark}" id="Remark" class="text-center text-info"></p></h4> -->
+			<input type="hidden" id="openid" value="" th:value="${openid}"> 
+			<input type="hidden" id="urlflag" value="" th:value="${urlflag}">
+			<input type="hidden" id="trade_no" value="" th:value="${trade_no}">
+			
+		</div>
+		<hr >
+		
+		<div style="margin-top: 50px;" align="center">
+				<div class="btn-group" role="group">
+					<button class="btn btn-lg btn-success" style="width: 25rem;">查看缴费结果</button> 
+				</div>
+		</div>
+	   
+        <script type="text/javascript">
+	        $(document).ready(function(){
+	        	window.οnlοad=function(){	 
+					//判断跳转到哪个地址
+					var urlflag = $("#urlflag").val();
+					var ip = "";
+					if(urlflag == "wxpay"){
+						ip = "/aggpay/data/ZF_wxpaystatus";
+					}else if(urlflag == "alipay"){
+						ip = "/aggpay/data/ZF_alipaystatus";
+					} 
+						 
+					$.post("/aggpay/trade/ZF_wxpaystatus",
+					{
+						BillNo:$("#BillNo").val(),
+					},
+					function(){
+						
+					}); 
+        		  
+	        	};
+	        });
+        </script>	
+	</body>
+</html>

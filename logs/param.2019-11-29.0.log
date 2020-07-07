@@ -1,0 +1,36 @@
+10:32:14.392 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 17696 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+10:32:14.394 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev
+10:32:17.900 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 3.967 seconds (JVM running for 4.58)
+10:47:46.403 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 1896 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+10:47:46.404 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev
+10:47:49.821 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 3.853 seconds (JVM running for 4.473)
+11:21:04.688 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 18664 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+11:21:04.704 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev
+11:21:08.287 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 4.027 seconds (JVM running for 4.635)
+11:40:45.942 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 12836 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+11:40:46.035 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev
+11:40:49.553 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 4.044 seconds (JVM running for 4.651)
+12:08:04.848 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 1804 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+12:08:04.935 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev
+12:08:08.603 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 4.185 seconds (JVM running for 4.804)
+14:14:43.863 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 20484 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+14:14:43.903 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev2
+14:14:47.536 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 4.131 seconds (JVM running for 4.786)
+14:29:17.211 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 18884 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+14:29:17.213 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev2
+14:29:20.887 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 4.119 seconds (JVM running for 4.748)
+14:32:51.303 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 5908 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+14:32:51.385 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev2
+14:32:54.830 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 3.987 seconds (JVM running for 4.62)
+14:53:50.694 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 12148 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+14:53:50.695 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev2
+14:53:54.225 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 3.965 seconds (JVM running for 4.574)
+15:03:57.297 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 20292 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+15:03:57.298 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev2
+15:04:00.908 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 4.051 seconds (JVM running for 4.687)
+16:34:58.036 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 11484 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+16:34:58.150 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev2
+16:35:01.694 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 4.099 seconds (JVM running for 4.742)
+16:46:22.416 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 20524 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+16:46:22.417 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev2
+16:46:25.950 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 3.998 seconds (JVM running for 4.748)

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>支付台</title>
+		<link rel="stylesheet" href="../lib/css/bootstrap.min.css"/>
+		<script src="../lib/js/jquery-1.12.4.min.js"></script>
+		<script src="../lib/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+       
+     <div>
+        <div class="container" style="background-color: #F7F7F7;">
+<!--          <center style="margin-top:20px; margin-bottom: 10px;"><img src="../lib/img/yiyuan.png" ></center> -->
+			<center style="margin-top:20px; margin-bottom: 10px;">
+				<img src="../lib/img/shanghu24.png" style="margin-bottom: 5px;">
+				<span style="font-size: 17px; margin-left: 2px;">遵义市播州区人民医院</span>
+			</center>
+		</div>
+	</div>
+	<div >
+            <center><img src="../lib/img/chenggong72.png" style="margin-top:30px; margin-bottom: 10px;"></center>
+			<div>
+            	<!-- <h4><div id="tips" class="text-center"></div></h4> -->
+		        <h4><p th:text="${tips}" class="text-center"></p></h4>
+		        <hr style="margin-bottom: 10px;">
+		    </div>
+	</div>
+	<!-- height和line-height 用于保证span和input对齐 -->
+	<div style="margin-left: 15px;height: 30px; line-height: 30px;" class="help-block">
+		<div>
+			<span>付款方式：</span>
+			<input text="text" readonly id="zffs" value="XXX支付" th:value="${zffs}" th:placeholder="${zffs}"  style="outline:0;border: 0; width: 270px; height: 30px; font-size: 15px;" class=" text-right">
+		</div>
+		<div>
+			<span>处方单号：</span>
+			<input text="text" readonly id="buff" value="CF123456" th:value="${buff}" th:placeholder="${buff}"  style="outline:0;border: 0; width: 270px; height: 30px; font-size: 15px;" class=" text-right">
+		</div>
+		<div>
+			<span>支付时间：</span>
+			<input text="text" readonly id="now_time" value="2020-01-02 08:12:11" th:value="${now_time}" th:placeholder="${now_time}"  style="outline:0; border: 0; width: 270px; height: 30px; font-size: 15px;" class=" text-right">
+		</div>
+	</div>
+	<hr style="margin-top: 10px;">
+	<div style="margin-top:10px;">
+		<center><span class="text-danger">医院更多信息请扫描二维码关注微信公众号</span></center>
+		<center><img src="../lib/img/ewm2.png" width="100px";height="100px" style="margin-top:30px;"></center>
+		<p class="help-block" align="center">(长按保存并识别图中二维码)</p>	
+	</div>
+      
+  
+   		
+   		<!-- <script type="text/javascript">
+	        var urlinfo = window.location.href;      //获取url
+	        var tips = urlinfo.split("?")[1].split("=")[1];//拆分url得到”=”后面的参数
+			var decode_tips = decodeURI(tips)//decodeURI针对整个参数进行解码
+			
+			$("#tips").html(decode_tips);
+			
+	       
+        </script> -->
+        
+        
+	</body>
+</html>

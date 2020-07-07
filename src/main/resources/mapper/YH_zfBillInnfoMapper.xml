@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="billinfo">
+	<resultMap id="BaseResultMap" type="map">
+		<!-- column对应数据库中字段名，property对应实体类中名,进行转化 -->
+		<result column="BillNo" jdbcType="VARCHAR" property="BillNo" />
+		<result column="PatientId" jdbcType="VARCHAR" property="PatientId" />
+		<result column="BillName" jdbcType="VARCHAR" property="BillName" />
+		<result column="BillMoney" jdbcType="VARCHAR" property="BillMoney" />
+		<result column="BillTime" jdbcType="VARCHAR" property="BillTime" />
+		<result column="SetDepartName" jdbcType="VARCHAR" property="SetDepartName" />
+		<result column="PayOrderid" jdbcType="VARCHAR" property="PayOrderid" />
+		<result column="ReturnOrderid" jdbcType="VARCHAR" property="ReturnOrderid" />
+		<result column="PayStatus" jdbcType="VARCHAR" property="PayStatus" />
+        <result column="PayMethod" jdbcType="VARCHAR" property="PayMethod" />
+        <result column="PatientName" jdbcType="VARCHAR" property="PatientName" />
+        <result column="Openid" jdbcType="VARCHAR" property="Openid" />
+	</resultMap>
+	
+    <!-- 根据BillNo查询所有数据 -->
+    <select id="select" parameterType="map" resultMap="BaseResultMap">
+	    select *
+	    from billinfo
+	    <where>
+	       BillNo = #{BillNo,jdbcType=VARCHAR}
+	    </where>
+	</select>
+
+    <insert id="insertall" parameterType="map">
+        insert into billinfo
+
+           (BillNo, PatientId, BillName, BillMoney, BillTime,SetDepartName, PayOrderid, ReturnOrderid, PayStatus,PayMethod,PatientName)
+          	values
+            (#{BillNo,jdbcType=VARCHAR},
+            #{PatientId,jdbcType=VARCHAR},
+            #{BillName,jdbcType=VARCHAR},
+            #{BillMoney,jdbcType=VARCHAR},
+            #{BillTime,jdbcType=VARCHAR},
+            #{SetDepartName,jdbcType=VARCHAR},
+            #{PayOrderid,jdbcType=VARCHAR},
+            #{ReturnOrderid,jdbcType=VARCHAR},
+            #{PayStatus,jdbcType=VARCHAR},
+            #{PayMethod,jdbcType=VARCHAR},
+            #{PatientName,jdbcType=VARCHAR},
+            #{Openid,jdbcType=VARCHAR},)
+
+        ON DUPLICATE KEY UPDATE
+        BillNo = #{BillNo,jdbcType=VARCHAR},
+        PatientId =  #{PatientId,jdbcType=VARCHAR},
+        BillName =  #{BillName,jdbcType=VARCHAR},
+        BillMoney =  #{BillMoney,jdbcType=VARCHAR},
+        BillTime = #{BillTime,jdbcType=VARCHAR},
+        SetDepartName = #{SetDepartName,jdbcType=VARCHAR},
+        PayOrderid =  #{PayOrderid,jdbcType=VARCHAR},
+        ReturnOrderid =  #{ReturnOrderid,jdbcType=VARCHAR},
+        PayStatus =  #{PayStatus,jdbcType=VARCHAR},
+        PayMethod = #{PayMethod,jdbcType=VARCHAR},
+        PatientName = #{PatientName,jdbcType=VARCHAR},
+        Openid = #{Openid,jdbcType=VARCHAR},}
+
+    </insert>
+
+    <insert id="insert" parameterType="map">
+        insert into billinfo
+
+           (BillNo, PayOrderid,
+           ReturnOrderid,PayStatus)
+          	values
+            (#{BillNo,jdbcType=VARCHAR},
+            #{PayOrderid,jdbcType=VARCHAR},
+            #{ReturnOrderid,jdbcType=VARCHAR},
+            #{PayStatus,jdbcType=VARCHAR})
+
+        ON DUPLICATE KEY UPDATE
+        BillNo = #{BillNo,jdbcType=VARCHAR},
+        PayOrderid =   #{PayOrderid,jdbcType=VARCHAR},
+        ReturnOrderid =  #{ReturnOrderid,jdbcType=VARCHAR},
+        PayStatus =  #{PayStatus,jdbcType=VARCHAR}
+
+    </insert>
+	
+	<update id="updateByBillNo" parameterType="map">
+	    update yh_zfbillinfo
+	    <set>
+		  <!--<if test="his_paystatus != 1">
+	        his_paystatus = #{his_paystatus,jdbcType=CHAR},
+	        third_paystatus =  #{third_paystatus,jdbcType=CHAR},
+	      </if>-->   
+	    BillNo = #{BillNo,jdbcType=VARCHAR},
+		open_id = #{open_id,jdbcType=VARCHAR},
+		outTradeNo = #{outTradeNo,jdbcType=VARCHAR},
+		TotalAmount = #{TotalAmount,jdbcType=VARCHAR},
+	    </set>
+	    where BillNo = #{BillNo,jdbcType=VARCHAR}
+	</update>
+
+</mapper>

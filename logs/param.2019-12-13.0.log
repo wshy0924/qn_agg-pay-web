@@ -1,0 +1,3 @@
+02:05:16.178 [main] INFO  c.g.pay.AggPayWebApplicationTests - Starting AggPayWebApplicationTests on LAPTOP-DHQVS64H with PID 21788 (started by asus in F:\BZ_agg-pay-web\BZ_agg-pay-web)
+02:05:16.179 [main] INFO  c.g.pay.AggPayWebApplicationTests - The following profiles are active: dev2
+02:05:20.093 [main] INFO  c.g.pay.AggPayWebApplicationTests - Started AggPayWebApplicationTests in 4.351 seconds (JVM running for 5.052)

@@ -45,6 +45,7 @@ public class GGitUtil {
 			SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 			return df.format(System.currentTimeMillis());//当前时间
 		}
+
 		public static  String getNowTime(){
 			SimpleDateFormat df = new SimpleDateFormat("YYYYMMDD");
 			return df.format(System.currentTimeMillis());//当前时间

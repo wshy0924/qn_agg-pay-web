@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>支付台</title>
+		<link rel="stylesheet" href="../lib/css/bootstrap.min.css"/>
+		<script src="../lib/js/jquery-1.12.4.min.js"></script>
+		<script src="../lib/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+       
+     <div>
+        <div class="container" style="background-color: #F7F7F7;">
+<!--          <center style="margin-top:20px; margin-bottom: 10px;"><img src="../lib/img/yiyuan.png" ></center> -->
+			<center style="margin-top:20px; margin-bottom: 10px;">
+				<img src="../lib/img/shanghu24.png" style="margin-bottom: 5px;">
+				<span style="font-size: 17px; margin-left: 2px;">务川人民医院</span>
+			</center>
+		</div>
+	</div>
+	<div >
+            <center><img src="../lib/img/chenggong72.png" style="margin-top:30px; margin-bottom: 10px;"></center>
+			<div>
+            	<!-- <h4><div id="tips" class="text-center"></div></h4> -->
+		        <h4><p th:text="${tips}" class="text-center"></p></h4>
+		        <hr style="margin-bottom: 10px;">
+				
+		    </div>
+	</div>
+
+	<!-- height和line-height 用于保证span和input对齐 -->
+	<!-- <div style="margin-left: 15px;height: 30px; line-height: 30px;" class="help-block">
+		<div>
+			<span>付款方式：</span>
+			<input text="text" readonly id="zffs" value="XXX支付" th:value="${zffs}" th:placeholder="${zffs}"  style="outline:0;border: 0; width: 270px; height: 30px; font-size: 15px;" class=" text-right">
+		</div>
+		<div>
+			<span>处方单号：</span>
+			<input text="text" readonly id="buff" value="CF123456" th:value="${buff}" th:placeholder="${buff}"  style="outline:0;border: 0; width: 270px; height: 30px; font-size: 15px;" class=" text-right">
+		</div>
+		<div>
+			<span>支付时间：</span>
+			<input text="text" readonly id="now_time" value="2020-01-02 08:12:11" th:value="${now_time}" th:placeholder="${now_time}"  style="outline:0; border: 0; width: 270px; height: 30px; font-size: 15px;" class=" text-right">
+		</div>
+	</div> -->
+	<hr style="margin-top: 10px;">
+	 <div style="margin-top: 80px;">
+		 <div><h4><p class="text-center text-info">处方单据详细信息</p></h4></div>
+		 <hr style="margin-top: 1px;">
+		 <div style="margin-left: 15px;" >
+			 <span style="color: #ADADAD;" id="span1">就诊人</span>
+			 <input text="text" readonly id="PatientName" value="许超一" th:value="${PatientName}" th:placeholder="${PatientName}"  style="outline:0;border: 0;  width: 50%; height: 20px; font-size: 15px;" class=" text-right">
+		 </div>
+		 <div style="margin-left: 15px;margin-top: 8px;">
+			 <span style="color: #ADADAD;" id="span1">就诊人编号</span>
+			 <input text="text" readonly id="PatientId" value="U0218912" th:value="${PatientId}" th:placeholder="${PatientId}"  style="outline:0;border: 0;  width:  50%; height: 20px; font-size: 15px;" class=" text-right">
+		 </div>
+
+		 <div style="margin-left: 15px; margin-top: 8px;">
+			 <span style="color: #ADADAD;" id="span1">支付方式</span>
+			 <input text="text" readonly id="payType" value="微信支付" th:value="${payType}" th:placeholder="${payType}"  style="outline:0;border: 0;  width:50%; height: 20px; font-size: 15px;" class=" text-right">
+		 </div>
+		 <div style="margin-left: 15px; margin-top: 8px;">
+			 <span style="color: #ADADAD;" id="span1">单据费用(单位:元)</span>
+			 <input text="text" readonly id="BillCost" value="12.25" th:value="${BillCost}" th:placeholder="${BillCost}"  style="outline:0;border: 0;  width: 50%; height: 20px; font-size: 15px;" class=" text-right">
+		 </div>
+		 <div style="margin-left: 15px;margin-top: 8px;">
+			 <span style="color: #ADADAD;" id="span1">支付时间</span>
+			 <input text="text" readonly id="NowTime" value="2020-01-02 08:12:11" th:value="${NowTime}" th:placeholder="${NowTime}"  style="outline:0;border: 0;  width: 50%; height: 20px; font-size: 15px;" class=" text-right">
+		 </div>
+
+	 </div>
+	</body>
+</html>

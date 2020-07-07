@@ -1,0 +1,26 @@
+@charset "utf-8";
+*{-webkit-tap-highlight-color:rgba(0,0,0,0); -webkit-tap-highlight:rgba(0,0,0,0); /*取出点击出现半透明的灰色背景*/
+    -webkit-text-size-adjust:none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;  /*控制内容的可选择性*/
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;}
+html{ font:normal 62.5%/2.3em Arial,'微软雅黑',"宋体"; height:100%;}
+body{ padding:0px; margin:0 auto; color:#9C1B11; font-size:1.6em; line-height:2em; height:100%; min-width:32px; max-width:640px; overflow:hidden;}
+ul,li,form, dl,dt,dd, div,.p{ padding:0px; margin:0px;}
+ul,li{ margin:0px; list-style:none;}
+img{ border:none; border:0; max-width:100%; overflow:hidden; vertical-align:top;}
+a{ color:#9C1B11; text-decoration:none;}  /* 去掉链接触摸高亮 */
+a:focus {outline:none; -moz-outline:none;}
+audio,canvas,progress,video { display: inline-block; vertical-align: baseline;}
+.Texthide{ display:none;}
+
+.Contain{
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;}
+.Loading{ background:url("../img/loading8.gif") 50% no-repeat #fff; width:100%; height:100%; overflow:hidden;  left:0; top:0; z-index:100;}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>付款-处方一码付</title>
+		<link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+		<script src="../lib/js/jquery-1.12.4.min.js"></script>
+		<script src="../lib/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			#span1{
+				font-size: 17px; 
+				font-family: "agency fb";
+				margin-left: 4px;
+			}
+			#span2{
+				font-size: 17px; 
+				font-family: "agency fb";
+				margin-left: 5px;
+			}
+			#span3{
+				display:inline-block;
+				width:130px;
+				text-align:left;
+				margin-left:20 px;
+				font-size: 17px;
+			}
+			.radio-wx {
+			    position: relative;
+			    display: inline-block;
+			    margin-right: 12px;
+				float: right;
+				margin-right: 3rem;
+			}
+			
+			.radio-wx input {
+			    vertical-align: middle;
+			    margin-top: -2px;
+			    margin-bottom: 1px;
+			    /* 前面三行代码是为了让radio单选按钮与文字对齐 */
+			    width: 20px;
+			    height: 20px;
+			    appearance: none;/*清楚默认样式*/
+			    -webkit-appearance: none;
+			    opacity: 0;
+			    outline: none;
+			    /* 注意不能设置为display:none*/
+				
+			}
+			
+			.radio-wx label {
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    z-index: -1;
+			    /*注意层级关系，如果不把label层级设为最低，会遮挡住input而不能单选*/
+			    width: 20px;
+			    height: 20px;
+			    border: 1px solid lightblue;
+			    border-radius: 100%;
+			}
+			.radio-wx input:checked+label {
+			    background: #D9534F;
+			}
+			.radio-wx input:checked+label::after {
+			    content: "";
+			    position: absolute;
+			    left: 7px;
+			    top: 2px;
+			    width: 5px;
+			    height: 12px;
+			    border-right: 2px solid #fff;
+			    border-bottom: 2px solid #fff;
+			    transform: rotate(45deg);
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="container" style="background-color: #F7F7F7;">
+			<center style="margin-top:20px; margin-bottom: 10px;">
+				<img src="../lib/img/shanghu24.png" style="margin-bottom: 5px;">
+				<span style="font-size: 17px; margin-left: 2px;">务川人民医院</span>
+			</center>
+<!-- 			<center style="margin-top:20px; margin-bottom: 10px;"><img src="../lib/img/yiyuan.png" ></center> -->
+		</div>
+			<!-- <div>
+		        <h3><p class="text-center">XX市XX人民医院</p></h3>
+		        <br>r
+		    </div> -->	
+		
+			
+		<div class="well well-sm" style="background-color:transparent;">
+			<center><img src="../lib/img/jinbi96.png" style="margin-top:5px; margin-bottom: 5px;"></center>
+			<div align = "center">
+				<h4><p>单据金额</p></h4>
+<!-- 				<input text="text" readonly id="InputAmount" value="12.45" th:value="${InputAmount}" th:placeholder="${InputAmount}"  style="outline:0;border: 0; text-align:center; width:80px; font-size:25px;" > -->
+				<span text="text" id="InputAmount" th:text="${InputAmount}" style=" font-size:25px;">12.45</span>
+				<span>元</span>
+			</div>
+			<p class="help-block" align="center">(核实无误后点击"去支付"按钮查看实际支付金额)</p>	
+		</div>
+
+		<div style="margin-left: 2rem; ">
+			<img src="../lib/img/wx_pay24.png" >
+			<span id="span1">微信支付</span>
+				<div class="radio-wx" >
+				     <input type="radio" id="wx1" name="wx" checked="checked"  >
+				     <label for="wx1"></label>
+			 	</div>
+		</div>
+		<hr >
+		<div>
+			
+			<input type="hidden" text="text" readonly id="PatientName" value="许超一" th:value="${PatientName}" th:placeholder="${PatientName}"  style="outline:0;border: 0;  width: 50%; height: 30px; font-size: 15px;" class=" text-right">
+			<input type="hidden" text="text" readonly id="BillNo" value="U0218912" th:value="${BillNo}" th:placeholder="${BillNo}"  style="outline:0;border: 0;  width: 50%; height: 30px; font-size: 15px;" class=" text-right">
+			<input type="hidden" id="openid" value="" th:value="${openid}"> 
+		</div>
+		<div align = "right" style="margin-right: 1.5rem;">
+			<span style="font-size: 18px;">单据应付:</span>
+			<span class="text-danger">￥</span>
+			<span th:text="${InputAmount}" style="font-size:25px;" class="text-danger">12.45</span>
+		</div>
+
+	<!-- 	<div align="center">
+				<div class="btn-group" role="group">
+					<button id="btn1" class="btn btn-lg btn-info" style="width: 26rem;">自费支付</button>
+				</div>
+		</div> -->
+		<div class="btn-group btn-group-justified" role="group">
+			<div class="btn-group" role="group">
+				<button class="btn btn-lg btn-danger">去支付</button> 
+			</div>
+		</div>
+	   
+        <script type="text/javascript">
+	        $(document).ready(function(){
+	        	$("button").click(function(){	        		  
+	        		  //模式2,返回数据
+	        		  $.post("/aggpay/trade/wx_ybtradeCreate",
+           			  {
+	        			  InputAmount:$("#InputAmount").text(),
+	        			  openid:$("#openid").val(),
+						  BillNo:$("#BillNo").val(),
+           			  },
+        			  function(data){
+           				window.location.href = data.url;
+           			  });
+	        		  
+	        	});
+	        });
+        </script>	
+	</body>
+</html>

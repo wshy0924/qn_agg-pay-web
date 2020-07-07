@@ -1,0 +1,22 @@
+{
+	
+		"FIELD_SIGN":"sign",
+		"req_url":"http://127.0.0.1:19080/PAY_Web/YhybGateway.do",
+		"WXMD5KEY":"ErThh9yIyTjVQKAT14mMZExI7NIqzNYx",
+		
+		"HISUrl":"http://127.0.0.1:19080/GG_MobileHis_WCRM_GateWay/HisInvokerServlet.do",
+		"HISMD5KEY":"HtczW2pVi22aibK1HVfoTSz8KGEyCdiT",
+		
+		"Yhyb.AppId":"10400",
+		"Yhyb.MerId":"WCXRMYY",
+		"Yhyb.Md5Key":"d648ec91d16740a290e29d4920f149b2",
+		
+		"TerminalNumber":"GGGZH",
+		"CooperationUnit":"国光公众号",
+		
+		"IP":"gz.wcrmyy.ggzzrj.cn",
+		"WC_AppID":"wx5e21eaa658cdb874",
+		"WC_APP_SECRET":"867d11ddde31511ba71c64fbd9f02047",
+
+		"WC_MD5_KEY" : "pvL8XLXE8O7yAQUGydTR7yBtttVqY2aB"
+}

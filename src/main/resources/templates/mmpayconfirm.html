@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>付款-处方一码付</title>
+		<link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+
+		<script src="../lib/js/jquery-1.12.4.min.js"></script>
+		<script src="../lib/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			#span1{
+				font-size: 17px; 
+				font-family: "agency fb";
+				margin-left: 4px;
+			}
+			#span2{
+				font-size: 17px; 
+				font-family: "agency fb";
+				margin-left: 5px;
+			}
+			.radio-wx {
+			    position: relative;
+			    display: inline-block;
+			    margin-right: 12px;
+				float: right;
+				margin-right: 20px;
+			}
+			
+			.radio-wx input {
+			    vertical-align: middle;
+			    margin-top: -2px;
+			    margin-bottom: 1px;
+			    /* 前面三行代码是为了让radio单选按钮与文字对齐 */
+			    width: 20px;
+			    height: 20px;
+			    appearance: none;/*清楚默认样式*/
+			    -webkit-appearance: none;
+			    opacity: 0;
+			    outline: none;
+			    /* 注意不能设置为display:none*/
+				
+			}
+			
+			.radio-wx label {
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    z-index: -1;
+			    /*注意层级关系，如果不把label层级设为最低，会遮挡住input而不能单选*/
+			    width: 20px;
+			    height: 20px;
+			    border: 1px solid lightblue;
+			    border-radius: 100%;
+			}
+			.radio-wx input:checked+label {
+			    background: #D9534F;
+			}
+			.radio-wx input:checked+label::after {
+			    content: "";
+			    position: absolute;
+			    left: 7px;
+			    top: 2px;
+			    width: 5px;
+			    height: 12px;
+			    border-right: 2px solid #fff;
+			    border-bottom: 2px solid #fff;
+			    transform: rotate(45deg);
+			}
+		</style>
+		<script type="text/javascript">
+			function onBridgeReady(jsonReq) {
+				WeixinJSBridge.invoke('getBrandWCPayRequest', jsonReq, function(
+						res) {
+					//alert("res.err_msg = "+res.err_msg);
+					if (res.err_msg == "get_brand_wcpay_request:ok") {
+						//使用以上方式判断前端返回,微信团队郑重提示：
+						//res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+						window.location.href = "/aggpay/bz_data/bz_Wxpay?cfsb=" + $("#cfsb").val() + "&yllb=" + $("#yllb").val() 
+            			+ "&brid=" + $("#brid").val() + "&amount=" + $("#InputAmount").text() + "&pay_orderid="+ jsonReq.pay_orderid ;
+					}else{
+						window.location.href = "/aggpay/bz_data/failure?cfsb="+ $("#cfsb").val() + "&pay_orderid="+jsonReq.pay_orderid;
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		
+		<div class="container" style="background-color: #F7F7F7;">
+			<center style="margin-top:20px; margin-bottom: 10px;">
+				<img src="../lib/img/shanghu24.png" style="margin-bottom: 5px;">
+				<span style="font-size: 17px; margin-left: 2px;">遵义市播州区人民医院</span>
+			</center>
+<!-- 			<center style="margin-top:20px; margin-bottom: 10px;"><img src="../lib/img/yiyuan.png" ></center> -->
+		</div>
+			<!-- <div>
+		        <h3><p class="text-center">XX市XX人民医院</p></h3>
+		        <br>r
+		    </div> -->	
+		
+			
+		<div class="well well-sm" style="background-color:transparent;">
+			<center><img src="../lib/img/jinbi96.png" style="margin-top:5px; margin-bottom: 5px;"></center>
+			<div align = "center">
+				<h4><p>应付</p></h4>
+<!-- 				<input text="text" readonly id="InputAmount" value="12.45" th:value="${price}" th:placeholder="${price}"  style="outline:0;border: 0; text-align:center; width:80px; font-size:25px;" > -->
+				<span text="text" id="InputAmount" th:text="${price}" style=" font-size:25px;">12.45</span>
+				<span>元</span>
+			</div>
+			<p class="help-block" align="center">(核实无误后点击"去支付"按钮完成支付)</p>	
+		</div>
+
+		<div style="margin-left: 15px; ">
+			<!-- <span class="text-info">支付方式：</span> -->
+			<img src="../lib/img/wx_pay24.png" >
+			<span id="span1">微信支付</span>
+<!-- 			<img src="../lib/img/gou24.png" style="margin-right: 20px; width:20px;" align="right"> -->
+				<div class="radio-wx" >
+				     <input type="radio" id="wx1" name="wx" checked="checked"  >
+				     <label for="wx1"></label>
+			 	</div>
+		</div>
+<!-- 		<div style="margin-left: 15px;"> -->
+<!-- 			<img src="../lib/img/ali_pay24.png" > -->
+<!-- 			<span id="span2">支付宝支付</span> -->
+<!-- <!-- 			<img src="../lib/img/gou16.png" style="margin-right: 20px;" align="right"> -->
+<!-- 		</div> -->
+<!-- 		<hr > -->
+		<div >
+			<div style="margin-left: 15px;" >
+				<h5>
+					<span class="text-danger">就诊人：</span>
+					<input text="text" readonly id="name" value="尼古拉斯.买提勒斯" th:value="${name}" th:placeholder="${name}"  style="outline:0;border: 0;  width: 200px; height: 30px; font-size: 18px;" class="text-info text-center">
+						<!-- <span th:text="${name}" id="name" class="text-info text-center" >颜健</span> -->
+				</h5>
+			</div>
+		</div>
+		<div >
+			<!-- <h5 class="text-info" style="margin-left: 10px;">备注信息:</h5><h4><p th:text="${remark}" id="Remark" class="text-center text-info"></p></h4> -->
+			<input type="hidden" id="openid" value="" th:value="${openid}"> 
+			<input type="hidden" id="cfsb" value="" th:value="${cfsb}"> 
+			<input type="hidden" id="yllb" value="" th:value="${yllb}"> 
+			<input type="hidden" id="brid" value="" th:value="${brid}"> 
+		</div>
+		<hr >
+		<div align = "right" style="margin-right: 20px;">
+			<span style="font-size: 18px;">实付:</span>
+			<span class="text-danger">￥</span>
+			<span th:text="${price}" style="font-size:25px;" class="text-danger">12.45</span>
+		</div>
+		</div>
+		<div >
+			<div class="btn-group btn-group-justified" role="group">
+				<div class="btn-group" role="group">
+					<button class="btn btn-lg btn-danger">去支付</button> 
+				</div>
+			</div> 
+		</div>
+	   
+        <script type="text/javascript">
+	        $(document).ready(function(){
+	        	$("button").click(function(){	        		  
+	        		  //模式2,返回数据
+	        		  $.post("/aggpay/data/dowxpay",
+           			  {
+	        			  amount:$("#InputAmount").text(),
+	        			  openid:$("#openid").val(),
+    	        		  cfsb:$("#cfsb").val(),
+    	        		  yllb:$("#yllb").val(),
+    	        		  brid:$("#brid").val(),
+           			  },
+        			  function(data,status){
+        				  console.log("data retcode = "+data.retcode+"\ndata msg = "+data.msg+"\nStatus: " + status);
+        				  console.log("data md5 = "+data.md5+"\ndata appid = "+data.appid);
+        				  console.log("data mch_id = "+data.mch_id+"\ndata nonce_str = "+data.nonce_str);
+        				  console.log("data prepay_id = "+data.prepay_id+"\ndata timeStamp = "+data.timeStamp);
+        				  //window.location.href = "/lay/tips?tips="+data.msg;
+       					  //返回报文
+       					  var jsonReq = {
+       						  "appId": data.appid,          //公众号名称     
+       						  "timeStamp": data.timeStamp,  //时间戳           
+       						  "nonceStr": data.nonce_str,//随机串              
+       						  "package" : data.prepay_id,
+       						  "pay_orderid":data.pay_orderid,
+       						  "signType": "MD5",  //微信签名方式
+       						  "paySign": data.md5 //微信签名 
+       					  };
+   						  //var jsondata=JSON.stringify(jsonReq);
+   						  //alert("jsondata="+jsondata);
+       					  if (typeof WeixinJSBridge == "undefined"){
+       				          if(document.addEventListener){
+       				        	  //document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+       				        	  document.addEventListener('WeixinJSBridgeReady', onBridgeReady(jsonReq), false);
+       				          }else if (document.attachEvent){
+       				        	  document.attachEvent('WeixinJSBridgeReady', onBridgeReady(jsonReq)); 
+       				              document.attachEvent('onWeixinJSBridgeReady', onBridgeReady(jsonReq));
+       				          }
+       					  }else{
+       						  onBridgeReady(jsonReq);
+       					  }
+        			  });
+	        		  
+	        	});
+	        });
+        </script>	
+	</body>
+</html>

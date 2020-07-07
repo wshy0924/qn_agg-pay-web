@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zfBillno">
+	<resultMap id="BaseResultMap" type="map">
+		<!-- <id column="cfsb" jdbcType="VARCHAR"
+			property="cfsb" />-->
+		<!-- column对应数据库中字段名，property对应实体类中名,进行转化 -->
+		<result column="BillSign" jdbcType="VARCHAR" property="BillSign" />
+		<result column="PatientId" jdbcType="VARCHAR" property="PatientId" />
+		<result column="PatientName" jdbcType="VARCHAR" property="PatientName" />
+		<result column="IdCard" jdbcType="VARCHAR" property="IdCard" />
+		<result column="BillNo" jdbcType="VARCHAR" property="BillNo" />
+		<result column="Price" jdbcType="VARCHAR" property="Price" />
+		
+	</resultMap>
+	
+    <!-- 根据BillSign查询所有数据 -->
+    <select id="select" parameterType="map" resultMap="BaseResultMap">
+	    select *
+	    from yh_zfbillno
+	    <where>
+	       BillSign = #{BillSign,jdbcType=VARCHAR}
+	    </where>
+	</select>
+	
+	<insert id="insert" parameterType="map">
+    	insert into yh_zfbillno
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="BillSign != null">
+        BillSign,
+      </if>
+      <if test="PatientId != null">
+        PatientId,
+      </if>
+      <if test="PatientName != null">
+        PatientName,
+      </if>
+      <if test="BillNo != null">
+        BillNo,
+      </if>
+      <if test="Price != null">
+        Price,
+      </if>
+  
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="BillSign != null">
+        #{BillSign,jdbcType=VARCHAR},
+      </if>
+      <if test="PatientId != null">
+        #{PatientId,jdbcType=VARCHAR},
+      </if>
+      <if test="PatientName != null">
+        #{PatientName,jdbcType=VARCHAR},
+      </if>
+      <if test="BillNo != null">
+        #{BillNo,jdbcType=VARCHAR},
+      </if>
+      <if test="Price != null">
+        #{Price,jdbcType=VARCHAR},
+      </if>
+      
+    </trim>
+		ON DUPLICATE KEY UPDATE
+		BillSign = #{BillSign,jdbcType=VARCHAR},
+		PatientId = #{PatientId,jdbcType=VARCHAR},
+		PatientName = #{PatientName,jdbcType=VARCHAR},
+		BillNo = #{BillNo,jdbcType=VARCHAR},
+		Price = #{Price,jdbcType=VARCHAR}
+  </insert>
+	
+	<update id="updateByBillNo" parameterType="map">
+	    update yh_billno
+	    <set>
+		  <!--<if test="his_paystatus != 1">
+	        his_paystatus = #{his_paystatus,jdbcType=CHAR},
+	        third_paystatus =  #{third_paystatus,jdbcType=CHAR},
+	      </if>-->   
+	    BillNo = #{BillNo,jdbcType=VARCHAR},
+		open_id = #{open_id,jdbcType=VARCHAR},
+		outTradeNo = #{outTradeNo,jdbcType=VARCHAR},
+		TotalAmount = #{TotalAmount,jdbcType=VARCHAR},
+	    </set>
+	    where BillNo = #{BillNo,jdbcType=VARCHAR}
+	</update>
+	
+	<!-- 数据库更新 -->
+	<update id="updateOrderByCfsb" parameterType="map">
+	    update bz_pay_order
+	    <set>
+		  <!--<if test="his_paystatus != 1">
+	        his_paystatus = #{his_paystatus,jdbcType=CHAR},
+	        third_paystatus =  #{third_paystatus,jdbcType=CHAR},
+	      </if>-->
+	      	his_paystatus = #{his_paystatus,jdbcType=CHAR},
+	        third_paystatus =  #{third_paystatus,jdbcType=CHAR},
+	        pay_type = #{zffs,jdbcType=CHAR},
+	        recipel_num = #{cfsb,jdbcType=VARCHAR},
+	        pay_orderid = #{pay_orderid,jdbcType=VARCHAR},
+	        refund_status = #{refund_status,jdbcType=CHAR},
+	        third_refundid = #{third_refundid,jdbcType=VARCHAR},
+	    </set>
+	    where recipel_num = #{cfsb,jdbcType=VARCHAR}
+	</update>
+</mapper>

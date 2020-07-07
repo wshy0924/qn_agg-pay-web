@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>支付台</title>
+		<link rel="stylesheet" href="../lib/css/bootstrap.min.css"/>
+		<script src="../lib/js/jquery-1.12.4.min.js"></script>
+		<script src="../lib/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+       
+     <div>
+        <div class="container" style="background-color: #F7F7F7;">
+        	<center style="margin-top:20px; margin-bottom: 10px;">
+				<img src="../lib/img/shanghu24.png" style="margin-bottom: 5px;">
+				<span style="font-size: 17px; margin-left: 2px;">务川人民医院</span>
+			</center>
+<!--          <center style="margin-top:20px; margin-bottom: 10px;"><img src="../lib/img/yiyuan.png" ></center> -->
+		</div>
+	</div>
+	<div >
+            <center><img src="../lib/img/cuowu72.png" style="margin-top:30px; margin-bottom: 10px;"></center>
+			<div>
+            	<!-- <h4><div id="tips" class="text-center"></div></h4>-->
+		        <h4><p th:text="${tips}" class="text-center"></p></h4> 
+		        <hr>
+		    </div>
+	</div>
+	
+	<div style="margin-top:100px;">
+		<center><span class="text-danger">医院更多信息请扫描二维码关注微信公众号</span></center>
+		<center><img src="../lib/img/ewm2.png" width="100px";height="100px" style="margin-top:30px;"></center>
+		<p class="help-block" align="center">(长按保存并识别图中二维码)</p>	
+	</div>
+	</body>
+</html>
